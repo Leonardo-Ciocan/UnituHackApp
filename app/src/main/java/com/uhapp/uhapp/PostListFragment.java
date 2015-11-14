@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.parse.FindCallback;
@@ -26,13 +27,23 @@ public class PostListFragment   extends Fragment {
 
         final ListView listView = (ListView)rootView.findViewById(R.id.listView);
 
+
         ParseQuery<Post> query = new ParseQuery<Post>("Post");
         query.orderByDescending("likes");
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> objects, ParseException e) {
-                PostListFragment.adapter = new ListAdapter(getActivity() , R.layout.post_layout , objects);
+                PostListFragment.adapter = new ListAdapter(getActivity(), R.layout.post_layout, objects);
                 listView.setAdapter(PostListFragment.adapter);
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int page = adapter.getItem(position).getPage();
+                MainActivity.pager.setCurrentItem(0);
+                PDFFragment.pdfView.jumpTo(page);
             }
         });
 

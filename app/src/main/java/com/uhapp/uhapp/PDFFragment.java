@@ -17,6 +17,7 @@ import com.parse.ParseUser;
 
 public class PDFFragment extends Fragment {
     public static final String ARG_OBJECT = "object";
+    static public PDFView pdfView;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -26,7 +27,8 @@ public class PDFFragment extends Fragment {
         View rootView = inflater.inflate(
                 R.layout.pdffragment, container, false);
 
-        final PDFView pdfView = (PDFView) rootView.findViewById(R.id.pdfview);
+        pdfView = (PDFView) rootView.findViewById(R.id.pdfview);
+
         pdfView.fromAsset("test.pdf")
                 .defaultPage(1)
                 .showMinimap(false)

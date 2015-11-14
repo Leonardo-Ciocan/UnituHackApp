@@ -27,6 +27,8 @@ import com.parse.ParseUser;
 public class MainActivity extends ActionBarActivity {
 
     int page = 2;
+    static public ViewPager pager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,10 +46,10 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        pager = (ViewPager) findViewById(R.id.pager);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setTitle("AFL (Live)");
+        getSupportActionBar().setTitle("AFL");
         pager.setAdapter(new FragmentAdapter(getSupportFragmentManager()));
 
         TabLayout appBarLayout = (TabLayout) findViewById(R.id.toolbarLayout);
@@ -69,10 +71,7 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }

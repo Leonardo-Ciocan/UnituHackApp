@@ -30,4 +30,9 @@ public class Post  extends ParseObject{
     public void setUser(ParseUser user){
         put("user",user);
     }
+
+    public int getLikes(){
+        return getInt("likes");
+    }
+
 }

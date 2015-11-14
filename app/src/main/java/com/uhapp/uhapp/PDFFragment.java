@@ -26,7 +26,7 @@ public class PDFFragment extends Fragment {
         View rootView = inflater.inflate(
                 R.layout.pdffragment, container, false);
 
-        PDFView pdfView = (PDFView) rootView.findViewById(R.id.pdfview);
+        final PDFView pdfView = (PDFView) rootView.findViewById(R.id.pdfview);
         pdfView.fromAsset("test.pdf")
                 .defaultPage(1)
                 .showMinimap(false)
@@ -54,10 +54,11 @@ public class PDFFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Post post = new Post();
-                        post.setPage(2);
-                        post.setText(((EditText)dialoglayout.findViewById(R.id.post_text)).getText().toString());
+                        post.setPage(pdfView.getCurrentPage());
+                        post.setText(((EditText) dialoglayout.findViewById(R.id.post_text)).getText().toString());
                         post.setUser(ParseUser.getCurrentUser());
                         post.saveInBackground();
+                        PostListFragment.adapter.add(post);
                         dialog.dismiss();
                     }
                 });

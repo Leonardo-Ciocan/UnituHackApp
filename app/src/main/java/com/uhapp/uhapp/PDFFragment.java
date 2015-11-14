@@ -27,6 +27,8 @@ public class PDFFragment extends Fragment {
         View rootView = inflater.inflate(
                 R.layout.pdffragment, container, false);
 
+
+
         pdfView = (PDFView) rootView.findViewById(R.id.pdfview);
 
         pdfView.fromAsset("test.pdf")

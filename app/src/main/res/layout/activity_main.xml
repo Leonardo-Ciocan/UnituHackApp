@@ -23,11 +23,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/brand">
-        <TextView
-            android:textColor="#fff"
-            android:text="AFL Lecture 5"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="fill_parent">
+            <TextView
+
+                android:textSize="9pt"
+                android:textColor="#fff"
+                android:text="AFL Lecture 5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/slideNum"
+                android:textSize="7pt"
+                android:textColor="#abffffff"
+                android:text="15 other notes on this slide > "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
         </android.support.v7.widget.Toolbar>
         <android.support.design.widget.TabLayout
             android:id="@+id/toolbarLayout"

@@ -1,10 +1,14 @@
 package com.uhapp.uhapp;
 
 import android.content.DialogInterface;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,42 +43,16 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PDFView pdfView = (PDFView) findViewById(R.id.pdfview);
-        pdfView.fromAsset("test.pdf")
-                .defaultPage(1)
-                .showMinimap(false)
-                .enableSwipe(true)
-                .onPageChange(new OnPageChangeListener() {
-                    @Override
-                    public void onPageChanged(int i, int i1) {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        setSupportActionBar(toolbar);
 
-                    }
-                })
-                .load();
+        getSupportActionBar().setTitle("AFL (Live)");
+        pager.setAdapter(new FragmentAdapter(getSupportFragmentManager()));
 
+        TabLayout appBarLayout = (TabLayout) findViewById(R.id.toolbarLayout);
+        appBarLayout.setupWithViewPager(pager);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LayoutInflater inflater = getLayoutInflater();
-                final View dialoglayout = inflater.inflate(R.layout.new_dialog, null);
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Post post = new Post();
-                        post.setPage(page);
-                        post.setText(((EditText)dialoglayout.findViewById(R.id.post_text)).getText().toString());
-                        post.setUser(ParseUser.getCurrentUser());
-                        post.saveInBackground();
-                        dialog.dismiss();
-                    }
-                });
-                builder.setView(dialoglayout);
-                builder.show();
-            }
-        });
     }
 
     @Override

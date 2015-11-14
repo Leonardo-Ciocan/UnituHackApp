@@ -6,20 +6,28 @@
     tools:context=".MainActivity">
 
 
-    <com.joanzapata.pdfview.PDFView
-        android:id="@+id/pdfview"
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.AppBarLayout
+
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_white_18dp"
-        android:layout_gravity="bottom|end"
-        app:elevation="6dp"
-        app:backgroundTint="@color/brand"
+        android:layout_width="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/brand"/>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/toolbarLayout"
 
-        app:pressedTranslationZ="12dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|enterAlways"/>
+    </android.support.design.widget.AppBarLayout>
+
 
 </FrameLayout>

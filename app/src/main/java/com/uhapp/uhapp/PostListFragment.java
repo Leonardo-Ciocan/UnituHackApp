@@ -18,6 +18,7 @@ import java.util.List;
 public class PostListFragment   extends Fragment {
     public static final String ARG_OBJECT = "object";
 
+    public static List<Post> list;
     public static ListAdapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -33,6 +34,7 @@ public class PostListFragment   extends Fragment {
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> objects, ParseException e) {
+                PostListFragment.list = objects;
                 PostListFragment.adapter = new ListAdapter(getActivity(), R.layout.post_layout, objects);
                 listView.setAdapter(PostListFragment.adapter);
             }

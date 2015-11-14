@@ -39,7 +39,14 @@ public class PDFFragment extends Fragment {
                 .onPageChange(new OnPageChangeListener() {
                     @Override
                     public void onPageChanged(int i, int i1) {
-
+                        int c = 0;
+                        if(PostListFragment.list == null)return;
+                        for(Post p : PostListFragment.list){
+                            if(p.getPage() == i){
+                                c++;
+                            }
+                        }
+                        MainActivity.slideNum.setText("There are " + c + " others");
                     }
                 })
                 .load();

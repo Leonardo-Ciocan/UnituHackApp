@@ -23,12 +23,15 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.w3c.dom.Text;
+
 
 public class MainActivity extends ActionBarActivity {
 
     int page = 2;
     static public ViewPager pager;
 
+    static public TextView slideNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,6 +47,7 @@ public class MainActivity extends ActionBarActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        slideNum = (TextView) findViewById(R.id.slideNum);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         pager = (ViewPager) findViewById(R.id.pager);

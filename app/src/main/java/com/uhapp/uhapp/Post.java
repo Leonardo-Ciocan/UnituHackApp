@@ -35,4 +35,12 @@ public class Post  extends ParseObject{
         return getInt("likes");
     }
 
+    public int getType(){
+        return getInt("type");
+    }
+
+    public void setType(int type){
+        put("type",type);
+    }
+
 }

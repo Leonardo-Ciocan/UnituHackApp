@@ -17,6 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    repositories{
+        maven { url 'http://maven.livotovlabs.pro/content/groups/public' }
+    }
 }
 
 dependencies {
@@ -26,5 +29,7 @@ dependencies {
     compile 'com.parse.bolts:bolts-android:1.+'
     compile 'com.parse:parse-android:1.+'
     compile 'com.android.support:design:22.2.0'
+    compile ('eu.livotov.labs:zxscanlib:2.0.1@aar') {transitive=true}
+
 
 }

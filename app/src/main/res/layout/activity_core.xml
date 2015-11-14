@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:orientation="vertical"
+
+    tools:context="com.uhapp.uhapp.CoreActivity">
+
+    <ImageView
+        android:padding="10dp"
+        android:src="@drawable/ic_photo_camera_light_blue_700_36dp"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:textColor="@color/brand"
+        android:gravity="center"
+        android:textSize="10pt"
+        android:text="Scan to start."
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="Find class manually >"
+        android:gravity="center"
+        android:textSize="10pt"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <eu.livotov.zxscan.ScannerView
+        android:id="@+id/scanner"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" />
+</LinearLayout>
